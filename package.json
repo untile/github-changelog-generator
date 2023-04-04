@@ -21,7 +21,7 @@
     "build": "bin/build.sh",
     "lint": "yarn lint:js && yarn lint:types",
     "lint-staged": "lint-staged",
-    "lint:js": "prettier --check .",
+    "lint:js": "eslint . --ext .ts",
     "lint:types": "tsc --noEmit",
     "prepare": "husky install",
     "test": "vitest --coverage --run --threads",
@@ -32,7 +32,8 @@
       "bash -c tsc --noEmit"
     ],
     "*.@(ts|tsx|js)": [
-      "prettier --write --ignore-unknown"
+      "prettier --write --ignore-unknown",
+      "eslint --fix"
     ],
     "package.json": [
       "sort-package-json"
@@ -52,7 +53,12 @@
     "@types/node": "^18.15.11",
     "@types/sinon": "^10.0.13",
     "@types/yargs": "^17.0.24",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
     "@vitest/coverage-c8": "^0.29.8",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-typescript-sort-keys": "^2.3.0",
     "fetch-mock": "^9.11.0",
     "husky": "^8.0.1",
     "jsdom": "^21.1.1",

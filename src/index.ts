@@ -71,6 +71,7 @@ async function run() {
   const changelog = await changelogGenerator(args);
 
   if (args.stdout) {
+    // eslint-disable-next-line no-console
     console.log(changelog);
 
     return;

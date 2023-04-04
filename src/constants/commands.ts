@@ -10,7 +10,7 @@ import { Argv } from 'yargs';
 
 export function defineCommands(yargs: Argv): Argv {
   return yargs
-    .epilog("Generate changelog files from the project's GitHub PRs")
+    .epilog('Generate changelog files from the project\'s GitHub PRs')
     .option('base-branch', {
       alias: 'b',
       default: 'master',
