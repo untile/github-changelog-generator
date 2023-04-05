@@ -25,7 +25,8 @@
     "lint:types": "tsc --noEmit",
     "prepare": "husky install",
     "test": "vitest --coverage --run --threads",
-    "test-watch": "vitest --watch"
+    "test-watch": "vitest --watch",
+    "version": "node bin/cli.js --future-release=v$npm_package_version && git add -A CHANGELOG.md"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
