@@ -51,14 +51,14 @@ This will generate the changelog with all the releases and output it to `CHANGEL
 This option allows you to filter PRs for a given branch. If not specified, it defaults to the "master" branch.
 
 ```sh
-$ yarn github-changelog-generator --rebuild --base-branch main
+$ yarn github-changelog-generator --future-release 1.0.0
 ```
 
 ### `--future-release`
 This allows you to specify a new release and generate its changelog. This changelog includes all pull requests (PRs) that have been merged since the last release. To also include changelogs for past releases, use the `--rebuild` option with `--future-release`. At least one of these two options is required; otherwise, the output will be empty.
 
 ```sh
-$ yarn github-changelog-generator --future-release 1.0.0
+$ yarn github-changelog-generator --future-release 1.0.0 --output CHANGELOG.md
 ```
 
 ### `--package-name`
@@ -74,13 +74,14 @@ In monorepos, it is necessary to add labels to PRs because it is the way to iden
 You can specify a path to a changelog file using the `--output` option. If the file already exists, the new changelog will be appended to the top. If used with `--rebuild`, the file will be overwritten.
 
 ```sh
-$ yarn github-changelog-generator --future-release 1.0.0 --output CHANGELOG.md
+$ yarn github-changelog-generator --future-release 1.0.0 --infer
 ```
 
-The resulting changelog can also be directed to `stdout` instead of a file with the `--stdout` option.
+### `--owner, --repo`
+If you are not inside your project's folder structure, you will need to manually specify the owner and name of the repository:
 
 ```sh
-$ yarn github-changelog-generator --future-release 1.0.0 --stdout
+$ yarn github-changelog-generator --rebuild --owner untile --repo github-changelog-generator
 ```
 
 If both the `--stdout` and `--output` options are omited, it will automatically write to a `CHANGELOG.md` file in the project root. If used with `--package-name`, it will instead output to that package's root. The same appending/overwitting logic as `--output` applies.

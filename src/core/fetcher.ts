@@ -27,6 +27,7 @@ import { graphql } from '@octokit/graphql';
  */
 
 export class ChangelogFetcher {
+
   /**
    * Variables.
    */
@@ -82,6 +83,7 @@ export class ChangelogFetcher {
   /**
    * `getRepositoryCreatedAt` method.
    */
+
   async getRepositoryCreatedAt(): Promise<Release['createdAt']> {
     const result: RepositoryCreatedAtQueryResponse = await this.client(
       repositoryCreatedAtQuery,
@@ -107,12 +109,12 @@ export class ChangelogFetcher {
     const futureRelease = this.futureRelease &&
       this.futureReleaseName &&
       this.futureReleaseTag && {
-        createdAt: new Date().toISOString(),
-        name: this.futureReleaseName,
-        pullRequests: [],
-        tagName: this.futureReleaseTag,
-        url: `https://github.com/${this.owner}/${this.repo}/releases/tag/${this.futureReleaseTag}`
-      };
+      createdAt: new Date().toISOString(),
+      name: this.futureReleaseName,
+      pullRequests: [],
+      tagName: this.futureReleaseTag,
+      url: `https://github.com/${this.owner}/${this.repo}/releases/tag/${this.futureReleaseTag}`
+    };
 
     if (
       futureRelease &&
@@ -122,8 +124,8 @@ export class ChangelogFetcher {
     }
 
     return [
-      ...(futureRelease ? [futureRelease] : []),
-      ...(result?.repository?.releases?.nodes ?? [])
+      ...futureRelease ? [futureRelease] : [],
+      ...result?.repository?.releases?.nodes ?? []
     ].filter(
       ({ name }) =>
         !this.packageName ||
@@ -183,10 +185,10 @@ export class ChangelogFetcher {
     if (result.repository.pullRequests.pageInfo.hasNextPage) {
       return [
         ...pullRequests,
-        ...(await this.fetchPullRequests(
+        ...await this.fetchPullRequests(
           result.repository.pullRequests.pageInfo.endCursor,
           startDate
-        ))
+        )
       ];
     }
 
@@ -262,4 +264,5 @@ export class ChangelogFetcher {
       }
     ];
   }
+
 }

@@ -18,10 +18,10 @@ export function formatChangelog(releases: Release[]): string {
       const pullRequestsText =
         release.pullRequests && release.pullRequests.length > 0
           ? release.pullRequests
-              .map(({ author, number, title, url }) => {
-                return `- ${title} [\\#${number}](${url}) ([${author.login}](${author.url}))\n`;
-              })
-              .join('')
+            .map(({ author, number, title, url }) => {
+              return `- ${title} [\\#${number}](${url}) ([${author.login}](${author.url}))\n`;
+            })
+            .join('')
           : '';
 
       return releaseHeader + pullRequestsText;
