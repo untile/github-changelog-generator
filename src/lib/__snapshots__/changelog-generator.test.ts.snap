@@ -1,0 +1,94 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Changelog generator > with workspaces > generates the full changelog for a future package release 1`] = `
+"# Changelog
+
+## [gen1 3.0.0](https://github.com/untile/test-github-changelog-generator/releases/tag/gen1-3.0.0) (2023-04-04)
+- Add eevee [\\\\#10](https://github.com/untile/test-github-changelog-generator/pull/10) ([luisdralves](https://github.com/luisdralves))
+- Add pikachu [\\\\#8](https://github.com/untile/test-github-changelog-generator/pull/8) ([luisdralves](https://github.com/luisdralves))
+
+## [gen1 2.0.0](https://github.com/untile/test-github-changelog-generator/releases/tag/gen1/2.0.0) (2023-03-31)
+- Add starters [\\\\#7](https://github.com/untile/test-github-changelog-generator/pull/7) ([luisdralves](https://github.com/luisdralves))
+"
+`;
+
+exports[`Changelog generator > with workspaces > generates the full changelog for a future package release 2`] = `
+"# Changelog
+
+## [gen2 3.0.0](https://github.com/untile/test-github-changelog-generator/releases/tag/gen2-3.0.0) (2023-04-04)
+- Add sentret [\\\\#9](https://github.com/untile/test-github-changelog-generator/pull/9) ([luisdralves](https://github.com/luisdralves))
+
+## [gen2 2.0.0](https://github.com/untile/test-github-changelog-generator/releases/tag/gen2/2.0.0) (2023-03-31)
+- Add starters [\\\\#7](https://github.com/untile/test-github-changelog-generator/pull/7) ([luisdralves](https://github.com/luisdralves))
+"
+`;
+
+exports[`Changelog generator > with workspaces > generates the latest changelog for a future package release 1`] = `
+"# Changelog
+
+## [gen1 3.0.0](https://github.com/untile/test-github-changelog-generator/releases/tag/gen1-3.0.0) (2023-04-04)
+- Add eevee [\\\\#10](https://github.com/untile/test-github-changelog-generator/pull/10) ([luisdralves](https://github.com/luisdralves))
+- Add pikachu [\\\\#8](https://github.com/untile/test-github-changelog-generator/pull/8) ([luisdralves](https://github.com/luisdralves))
+"
+`;
+
+exports[`Changelog generator > with workspaces > generates the latest changelog for a future package release 2`] = `
+"# Changelog
+
+## [gen2 3.0.0](https://github.com/untile/test-github-changelog-generator/releases/tag/gen2-3.0.0) (2023-04-04)
+- Add sentret [\\\\#9](https://github.com/untile/test-github-changelog-generator/pull/9) ([luisdralves](https://github.com/luisdralves))
+"
+`;
+
+exports[`Changelog generator > with workspaces > regenerates the full changelog for a package 1`] = `
+"# Changelog
+
+## [gen1 2.0.0](https://github.com/untile/test-github-changelog-generator/releases/tag/gen1/2.0.0) (2023-03-31)
+- Add starters [\\\\#7](https://github.com/untile/test-github-changelog-generator/pull/7) ([luisdralves](https://github.com/luisdralves))
+"
+`;
+
+exports[`Changelog generator > with workspaces > regenerates the full changelog for a package 2`] = `
+"# Changelog
+
+## [gen2 2.0.0](https://github.com/untile/test-github-changelog-generator/releases/tag/gen2/2.0.0) (2023-03-31)
+- Add starters [\\\\#7](https://github.com/untile/test-github-changelog-generator/pull/7) ([luisdralves](https://github.com/luisdralves))
+"
+`;
+
+exports[`Changelog generator > without workspaces > generates the full changelog for a future root release 1`] = `
+"# Changelog
+
+## [5.0.0](https://github.com/untile/test-github-changelog-generator-no-workspaces/releases/tag/5.0.0) (2023-04-04)
+- Add snorlax [\\\\#5](https://github.com/untile/test-github-changelog-generator-no-workspaces/pull/5) ([luisdralves](https://github.com/luisdralves))
+
+## [4.0.0](https://github.com/untile/test-github-changelog-generator-no-workspaces/releases/tag/4.0.0) (2023-04-03)
+- Add eevee [\\\\#4](https://github.com/untile/test-github-changelog-generator-no-workspaces/pull/4) ([luisdralves](https://github.com/luisdralves))
+- Add sentret [\\\\#3](https://github.com/untile/test-github-changelog-generator-no-workspaces/pull/3) ([luisdralves](https://github.com/luisdralves))
+- Add pikachu [\\\\#2](https://github.com/untile/test-github-changelog-generator-no-workspaces/pull/2) ([luisdralves](https://github.com/luisdralves))
+
+## [3.0.0](https://github.com/untile/test-github-changelog-generator-no-workspaces/releases/tag/3.0.0) (2023-03-31)
+- Add starters [\\\\#1](https://github.com/untile/test-github-changelog-generator-no-workspaces/pull/1) ([luisdralves](https://github.com/luisdralves))
+"
+`;
+
+exports[`Changelog generator > without workspaces > generates the latest changelog for a future root release 1`] = `
+"# Changelog
+
+## [5.0.0](https://github.com/untile/test-github-changelog-generator-no-workspaces/releases/tag/5.0.0) (2023-04-04)
+- Add snorlax [\\\\#5](https://github.com/untile/test-github-changelog-generator-no-workspaces/pull/5) ([luisdralves](https://github.com/luisdralves))
+"
+`;
+
+exports[`Changelog generator > without workspaces > regenerates the full changelog 1`] = `
+"# Changelog
+
+## [4.0.0](https://github.com/untile/test-github-changelog-generator-no-workspaces/releases/tag/4.0.0) (2023-04-03)
+- Add eevee [\\\\#4](https://github.com/untile/test-github-changelog-generator-no-workspaces/pull/4) ([luisdralves](https://github.com/luisdralves))
+- Add sentret [\\\\#3](https://github.com/untile/test-github-changelog-generator-no-workspaces/pull/3) ([luisdralves](https://github.com/luisdralves))
+- Add pikachu [\\\\#2](https://github.com/untile/test-github-changelog-generator-no-workspaces/pull/2) ([luisdralves](https://github.com/luisdralves))
+
+## [3.0.0](https://github.com/untile/test-github-changelog-generator-no-workspaces/releases/tag/3.0.0) (2023-03-31)
+- Add starters [\\\\#1](https://github.com/untile/test-github-changelog-generator-no-workspaces/pull/1) ([luisdralves](https://github.com/luisdralves))
+"
+`;
