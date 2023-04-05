@@ -99,3 +99,13 @@ This option allows you to filter pull requests based on their labels, which can 
 ```sh
 $ yarn github-changelog-generator --future-release 1.0.0 --labels bugfix,support
 ```
+
+## Release
+
+Be sure to have configured `GITHUB_TOKEN` in your globals.
+
+```sh
+yarn build
+npm version [<new version> | major | minor | patch] -m "Release %s"
+git push origin master && git push --tags
+```
