@@ -1,6 +1,6 @@
 # Changelog
 
-## [v1.0.0](https://github.com/untile/github-changelog-generator/releases/tag/v1.0.0) (2023-04-10)
+## [v1.0.1](https://github.com/untile/github-changelog-generator/releases/tag/v1.0.0) (2023-04-10)
 - Add badges to readme [\#9](https://github.com/untile/github-changelog-generator/pull/9) ([luisdralves](https://github.com/luisdralves))
 - Fix initial README inconsistencies [\#7](https://github.com/untile/github-changelog-generator/pull/7) ([luisdralves](https://github.com/luisdralves))
 - Rebuild changelog by default [\#8](https://github.com/untile/github-changelog-generator/pull/8) ([luisdralves](https://github.com/luisdralves))
