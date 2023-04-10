@@ -1,7 +1,6 @@
 # github-changelog-generator
 
 Generate changelog files from the project's GitHub PRs
-Based on [uphold/github-changelog-generator](https://github.com/uphold/github-changelog-generator) and [fossamagna/github-changelog-generator](https://github.com/fossamagna/github-changelog-generator)
 
 ## Usage
 
@@ -27,9 +26,9 @@ $ yarn github-changelog-generator --help
                               generate the changelog                      [string]
     -l, --labels              Comma-separated labels to filter pull requests by
                                                                            [array]
+        --latest              Build only the latest changelog            [boolean]
     -o, --owner               Owner of the repository                     [string]
     -r, --repo                Name of the repository                      [string]
-        --rebuild             Rebuild the full changelog                 [boolean]
     -d, --output              Path of the changelog file. If omitted, it will be
                               automatically inferred.                     [string]
         --stdout              Outputs to stdout instead of a file.       [boolean]
@@ -38,11 +37,10 @@ $ yarn github-changelog-generator --help
   Generate changelog files from the project's GitHub PRs
 ```
 
-### `--rebuild`
 To generate a changelog for your GitHub project, use the following command:
 
 ```sh
-$ yarn github-changelog-generator --rebuild
+$ yarn github-changelog-generator
 ```
 
 This will generate the changelog with all the releases and output it to `CHANGELOG.md`.
@@ -55,10 +53,17 @@ $ yarn github-changelog-generator --base-branch development
 ```
 
 ### `--future-release`
-This allows you to specify a new release and generate its changelog. This changelog includes all pull requests (PRs) that have been merged since the last release. To also include changelogs for past releases, use the `--rebuild` option with `--future-release`. At least one of these two options is required; otherwise, the output will be empty.
+This allows you to specify a new release and generate its changelog. This changelog includes all pull requests (PRs) that have been merged since the last release.
 
 ```sh
 $ yarn github-changelog-generator --future-release 1.0.0
+```
+
+### `--latest`
+You can generate only the changelog for the latest release, ommiting past releases. This is not recommended as it can lead to bugs.
+
+```sh
+$ yarn github-changelog-generator --future-release 1.0.0 --latest
 ```
 
 ### `--package-name`
@@ -71,7 +76,7 @@ $ yarn github-changelog-generator --future-release 1.0.0 --package-name project-
 In monorepos, it is necessary to add labels to PRs because it is the way to identify the changes and generate separate changelogs for each package. For example, using the labeler https://github.com/actions/labeler
 
 ### `--output`, `--stdout`
-You can specify a path to a changelog file using the `--output` option. If the file already exists, the new changelog will be appended to the top. If used with `--rebuild`, the file will be overwritten.
+You can specify a path to a changelog file using the `--output` option. If the file already exists, it will be overwritten. If used with `--latest`, the new changelog will be appended to the top.
 
 ```sh
 $ yarn github-changelog-generator --future-release 1.0.0 --output CHANGELOG.md
@@ -83,7 +88,7 @@ If both the `--stdout` and `--output` options are omited, it will automatically 
 If you are not inside your project's folder structure, you will need to manually specify the owner and name of the repository:
 
 ```sh
-$ yarn github-changelog-generator --rebuild --owner untile --repo github-changelog-generator
+$ yarn github-changelog-generator --owner untile --repo github-changelog-generator
 ```
 
 ### `--labels`

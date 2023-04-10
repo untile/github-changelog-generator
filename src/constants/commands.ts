@@ -49,8 +49,8 @@ export function defineCommands(yargs: Argv): Argv {
       describe: 'Name of the repository',
       type: 'string'
     })
-    .option('rebuild', {
-      describe: 'Rebuild the full changelog',
+    .option('latest', {
+      describe: 'Build only the latest changelog',
       type: 'boolean'
     })
     .option('output', {
