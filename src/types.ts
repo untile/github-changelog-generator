@@ -7,9 +7,9 @@ export interface ChangelogOptions {
   futureRelease?: string;
   futureReleaseTag?: string;
   labels?: string[];
+  latest?: boolean;
   owner: string;
   packageName?: string;
-  rebuild?: boolean;
   repo: string;
   token?: string;
 }

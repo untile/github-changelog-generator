@@ -213,8 +213,7 @@ describe('Changelog generator', () => {
     it('regenerates the full changelog', async () => {
       expect(
         await changelogGenerator({
-          ...commonNoWorkspacesOptions,
-          rebuild: true
+          ...commonNoWorkspacesOptions
         })
       ).toMatchSnapshot();
     });
@@ -223,7 +222,8 @@ describe('Changelog generator', () => {
       expect(
         await changelogGenerator({
           ...commonNoWorkspacesOptions,
-          futureRelease: '5.0.0'
+          futureRelease: '5.0.0',
+          latest: true
         })
       ).toMatchSnapshot();
     });
@@ -232,8 +232,7 @@ describe('Changelog generator', () => {
       expect(
         await changelogGenerator({
           ...commonNoWorkspacesOptions,
-          futureRelease: '5.0.0',
-          rebuild: true
+          futureRelease: '5.0.0'
         })
       ).toMatchSnapshot();
     });
@@ -242,7 +241,8 @@ describe('Changelog generator', () => {
       try {
         await changelogGenerator({
           ...commonNoWorkspacesOptions,
-          futureRelease: '4.0.0'
+          futureRelease: '4.0.0',
+          latest: true
         });
       } catch (error) {
         expect(error).toMatchObject({
@@ -253,8 +253,7 @@ describe('Changelog generator', () => {
       try {
         await changelogGenerator({
           ...commonNoWorkspacesOptions,
-          futureRelease: '4.0.0',
-          rebuild: true
+          futureRelease: '4.0.0'
         });
       } catch (error) {
         expect(error).toMatchObject({
@@ -435,21 +434,39 @@ describe('Changelog generator', () => {
       expect(
         await changelogGenerator({
           ...commonWorkspacesOptions,
-          packageName: 'gen1',
-          rebuild: true
+          packageName: 'gen1'
         })
       ).toMatchSnapshot();
 
       expect(
         await changelogGenerator({
           ...commonWorkspacesOptions,
-          packageName: 'gen2',
-          rebuild: true
+          packageName: 'gen2'
         })
       ).toMatchSnapshot();
     });
 
     it('generates the latest changelog for a future package release', async () => {
+      expect(
+        await changelogGenerator({
+          ...commonWorkspacesOptions,
+          futureRelease: '3.0.0',
+          latest: true,
+          packageName: 'gen1'
+        })
+      ).toMatchSnapshot();
+
+      expect(
+        await changelogGenerator({
+          ...commonWorkspacesOptions,
+          futureRelease: '3.0.0',
+          latest: true,
+          packageName: 'gen2'
+        })
+      ).toMatchSnapshot();
+    });
+
+    it('generates the full changelog for a future package release', async () => {
       expect(
         await changelogGenerator({
           ...commonWorkspacesOptions,
@@ -467,31 +484,12 @@ describe('Changelog generator', () => {
       ).toMatchSnapshot();
     });
 
-    it('generates the full changelog for a future package release', async () => {
-      expect(
-        await changelogGenerator({
-          ...commonWorkspacesOptions,
-          futureRelease: '3.0.0',
-          packageName: 'gen1',
-          rebuild: true
-        })
-      ).toMatchSnapshot();
-
-      expect(
-        await changelogGenerator({
-          ...commonWorkspacesOptions,
-          futureRelease: '3.0.0',
-          packageName: 'gen2',
-          rebuild: true
-        })
-      ).toMatchSnapshot();
-    });
-
     it('fails when requesting a future release that already exists', async () => {
       try {
         await changelogGenerator({
           ...commonWorkspacesOptions,
           futureRelease: '2.0.0',
+          latest: true,
           packageName: 'gen1'
         });
       } catch (error) {
@@ -504,8 +502,7 @@ describe('Changelog generator', () => {
         await changelogGenerator({
           ...commonWorkspacesOptions,
           futureRelease: '2.0.0',
-          packageName: 'gen1',
-          rebuild: true
+          packageName: 'gen1'
         });
       } catch (error) {
         expect(error).toMatchObject({

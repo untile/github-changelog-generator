@@ -19,10 +19,10 @@ interface CamelCaseOptions {
   futureRelease?: string;
   futureReleaseTag?: string;
   labels?: string[];
+  latest?: boolean;
   output?: string;
   owner?: string;
   packageName?: string;
-  rebuild?: boolean;
   repo?: string;
   stdout?: boolean;
 }
@@ -47,7 +47,7 @@ function writeChangelog(changelog: string, args: Args) {
     );
   }
 
-  if (args.rebuild) {
+  if (!args.latest) {
     writeFileSync(output, changelog, { encoding: 'utf-8' });
 
     return;
