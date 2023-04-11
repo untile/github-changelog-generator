@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.0.3](https://github.com/untile/github-changelog-generator/releases/tag/v1.0.3) (2023-04-11)
+- Fix changelog not picking up release without name [\#11](https://github.com/untile/github-changelog-generator/pull/11) ([flaviocastro](https://github.com/flaviocastro))
+
 ## [v1.0.2](https://github.com/untile/github-changelog-generator/releases/tag/v1.0.2) (2023-04-11)
 - Fix Homepage URL in Package.json [\#10](https://github.com/untile/github-changelog-generator/pull/10) ([flaviocastro](https://github.com/flaviocastro))
 
