@@ -72,7 +72,7 @@ export class ChangelogFetcher {
     this.futureReleaseTag =
       this.futureReleaseTag ??
       (this.packageName
-        ? `${this.packageName.toLowerCase()}-${this.futureRelease}`
+        ? `${this.packageName.toLowerCase()}/${this.futureRelease}`
         : this.futureRelease);
 
     this.labels = this.packageName
@@ -123,14 +123,27 @@ export class ChangelogFetcher {
       throw new Error('Changelog already on the latest release');
     }
 
-    return [
+    const allReleases = [
       ...futureRelease ? [futureRelease] : [],
       ...result?.repository?.releases?.nodes ?? []
-    ].filter(
-      ({ name }) =>
-        !this.packageName ||
-        name.toLowerCase().startsWith(this.packageName.toLowerCase())
-    );
+    ];
+
+    if (!this.packageName) {
+      // If theres no package name, we can just return all releases.
+      return allReleases;
+    }
+
+    // We filter out releases that don't match with the package name
+    // convention `<packageName>/vx.x.x`.
+    return allReleases.filter(({ tagName }) => {
+      if (!tagName) {
+        throw new Error('No tag name found');
+      }
+
+      return tagName
+        .toLowerCase()
+        .startsWith(`${this?.packageName?.toLowerCase()}/`);
+    });
   }
 
   /**

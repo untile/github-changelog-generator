@@ -353,7 +353,7 @@ describe('ChangelogFetcher', () => {
     const latestChangelog = await changelogFetcher.fetchLatestChangelog();
 
     expect(latestChangelog).toHaveLength(1);
-    expect(latestChangelog[0].tagName).toEqual('some-package-4.0.0');
+    expect(latestChangelog[0].tagName).toEqual('some-package/4.0.0');
     expect(latestChangelog[0].name).toEqual('some-package 4.0.0');
     expect(latestChangelog[0].pullRequests).toEqual(mockPullRequests);
 
