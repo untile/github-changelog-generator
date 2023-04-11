@@ -3,7 +3,7 @@
 exports[`Changelog generator > with workspaces > generates the full changelog for a future package release 1`] = `
 "# Changelog
 
-## [gen1 3.0.0](https://github.com/untile/workspaces/releases/tag/gen1-3.0.0) (2023-04-04)
+## [gen1 3.0.0](https://github.com/untile/workspaces/releases/tag/gen1/3.0.0) (2023-04-04)
 - Add eevee [\\\\#10](https://github.com/untile/workspaces/pull/10) ([luisdralves](https://github.com/luisdralves))
 - Add pikachu [\\\\#8](https://github.com/untile/workspaces/pull/8) ([luisdralves](https://github.com/luisdralves))
 
@@ -15,7 +15,7 @@ exports[`Changelog generator > with workspaces > generates the full changelog fo
 exports[`Changelog generator > with workspaces > generates the full changelog for a future package release 2`] = `
 "# Changelog
 
-## [gen2 3.0.0](https://github.com/untile/workspaces/releases/tag/gen2-3.0.0) (2023-04-04)
+## [gen2 3.0.0](https://github.com/untile/workspaces/releases/tag/gen2/3.0.0) (2023-04-04)
 - Add sentret [\\\\#9](https://github.com/untile/workspaces/pull/9) ([luisdralves](https://github.com/luisdralves))
 
 ## [gen2 2.0.0](https://github.com/untile/workspaces/releases/tag/gen2/2.0.0) (2023-03-31)
@@ -26,7 +26,7 @@ exports[`Changelog generator > with workspaces > generates the full changelog fo
 exports[`Changelog generator > with workspaces > generates the latest changelog for a future package release 1`] = `
 "# Changelog
 
-## [gen1 3.0.0](https://github.com/untile/workspaces/releases/tag/gen1-3.0.0) (2023-04-04)
+## [gen1 3.0.0](https://github.com/untile/workspaces/releases/tag/gen1/3.0.0) (2023-04-04)
 - Add eevee [\\\\#10](https://github.com/untile/workspaces/pull/10) ([luisdralves](https://github.com/luisdralves))
 - Add pikachu [\\\\#8](https://github.com/untile/workspaces/pull/8) ([luisdralves](https://github.com/luisdralves))
 "
@@ -35,7 +35,7 @@ exports[`Changelog generator > with workspaces > generates the latest changelog 
 exports[`Changelog generator > with workspaces > generates the latest changelog for a future package release 2`] = `
 "# Changelog
 
-## [gen2 3.0.0](https://github.com/untile/workspaces/releases/tag/gen2-3.0.0) (2023-04-04)
+## [gen2 3.0.0](https://github.com/untile/workspaces/releases/tag/gen2/3.0.0) (2023-04-04)
 - Add sentret [\\\\#9](https://github.com/untile/workspaces/pull/9) ([luisdralves](https://github.com/luisdralves))
 "
 `;

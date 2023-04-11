@@ -80,7 +80,7 @@ $ yarn github-changelog-generator --future-release 1.0.0
 ```
 
 ### `--latest`
-You can generate only the changelog for the latest release, ommiting past releases. This is not recommended as it can lead to bugs.
+You can generate only the changelog for the latest release, omitting past releases. This is not recommended as it can lead to bugs.
 
 ```sh
 $ yarn github-changelog-generator --future-release 1.0.0 --latest
@@ -93,7 +93,9 @@ If you are working with workspaces, you can keep a separate changelog for each p
 $ yarn github-changelog-generator --future-release 1.0.0 --package-name project-x
 ```
 
-In monorepos, it is necessary to add labels to PRs because it is the way to identify the changes and generate separate changelogs for each package. For example, using the labeler https://github.com/actions/labeler
+> #### ⚠️ In monorepos, it is necessary to add labels to PRs because it is the way to identify the changes and generate separate changelogs for each package. For example, using the labeler https://github.com/actions/labeler.
+
+> #### 🔥 In order to parse tags correctly, the tag convention must be `<package-name>/<version>`
 
 ### `--output`, `--stdout`
 You can specify a path to a changelog file using the `--output` option. If the file already exists, it will be overwritten. If used with `--latest`, the new changelog will be appended to the top.
@@ -102,7 +104,7 @@ You can specify a path to a changelog file using the `--output` option. If the f
 $ yarn github-changelog-generator --future-release 1.0.0 --output CHANGELOG.md
 ```
 
-If both the `--stdout` and `--output` options are omited, it will automatically write to a `CHANGELOG.md` file in the project root. If used with `--package-name`, it will instead output to that package's root. The same appending/overwitting logic as `--output` applies.
+If both the `--stdout` and `--output` options are omitted, it will automatically write to a `CHANGELOG.md` file in the project root. If used with `--package-name`, it will instead output to that package's root. The same appending/overwriting logic as `--output` applies.
 
 ### `--owner`, `--repo`
 If you are not inside your project's folder structure, you will need to manually specify the owner and name of the repository:
