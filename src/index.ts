@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 /**
  * Module dependencies.
  */
@@ -71,13 +73,23 @@ async function run() {
   const changelog = await changelogGenerator(args);
 
   if (args.stdout) {
-    // eslint-disable-next-line no-console
     console.log(changelog);
 
     return;
   }
 
-  writeChangelog(changelog, args);
+  try {
+    writeChangelog(changelog, args);
+  } catch {
+    console.warn(`
+      ⚠️ Warning
+      Unable to infer path to CHANGELOG.md.
+      "${path.resolve('.')}" does not seem to be inside an instance of "${args.owner}/${args.repo}"
+      Will output to stdout instead.
+    `);
+
+    console.log(changelog);
+  }
 }
 
 run();
