@@ -193,8 +193,8 @@ describe('Changelog generator', () => {
         {
           repository: {
             latestRelease: {
-              nodes: [
-                {
+              edges: [{
+                node: {
                   createdAt: '2023-04-03T13:15:17Z',
                   name: '4.0.0',
                   tagCommit: {
@@ -203,7 +203,7 @@ describe('Changelog generator', () => {
                   tagName: '4.0.0',
                   url: 'https://github.com/untile/no-workspaces/releases/tag/4.0.0'
                 }
-              ]
+              }]
             }
           }
         }
@@ -213,7 +213,8 @@ describe('Changelog generator', () => {
     it('regenerates the full changelog', async () => {
       expect(
         await changelogGenerator({
-          ...commonNoWorkspacesOptions
+          ...commonNoWorkspacesOptions,
+          rebuild: true
         })
       ).toMatchSnapshot();
     });
@@ -222,8 +223,7 @@ describe('Changelog generator', () => {
       expect(
         await changelogGenerator({
           ...commonNoWorkspacesOptions,
-          futureRelease: '5.0.0',
-          latest: true
+          futureRelease: '5.0.0'
         })
       ).toMatchSnapshot();
     });
@@ -232,7 +232,8 @@ describe('Changelog generator', () => {
       expect(
         await changelogGenerator({
           ...commonNoWorkspacesOptions,
-          futureRelease: '5.0.0'
+          futureRelease: '5.0.0',
+          rebuild: true
         })
       ).toMatchSnapshot();
     });
@@ -241,8 +242,7 @@ describe('Changelog generator', () => {
       try {
         await changelogGenerator({
           ...commonNoWorkspacesOptions,
-          futureRelease: '4.0.0',
-          latest: true
+          futureRelease: '4.0.0'
         });
       } catch (error) {
         expect(error).toMatchObject({
@@ -253,7 +253,8 @@ describe('Changelog generator', () => {
       try {
         await changelogGenerator({
           ...commonNoWorkspacesOptions,
-          futureRelease: '4.0.0'
+          futureRelease: '4.0.0',
+          rebuild: true
         });
       } catch (error) {
         expect(error).toMatchObject({
@@ -407,14 +408,16 @@ describe('Changelog generator', () => {
       fetchMockHelper(
         'latestRelease',
         {
+          after: null,
           owner: 'untile',
           repo: 'workspaces'
         },
         {
           repository: {
             latestRelease: {
-              nodes: [
-                {
+              edges: [{
+                cursor: 'cursor',
+                node: {
                   createdAt: '2023-03-31T09:58:16Z',
                   name: 'gen2 2.0.0',
                   tagCommit: {
@@ -423,7 +426,33 @@ describe('Changelog generator', () => {
                   tagName: 'gen2/2.0.0',
                   url: 'https://github.com/untile/workspaces/releases/tag/gen2/2.0.0'
                 }
-              ]
+              }]
+            }
+          }
+        }
+      );
+
+      fetchMockHelper(
+        'latestRelease',
+        {
+          after: 'cursor',
+          owner: 'untile',
+          repo: 'workspaces'
+        },
+        {
+          repository: {
+            latestRelease: {
+              edges: [{
+                node: {
+                  createdAt: '2023-03-31T09:58:16Z',
+                  name: 'gen1 2.0.0',
+                  tagCommit: {
+                    committedDate: '2023-03-31T09:58:16Z'
+                  },
+                  tagName: 'gen1/2.0.0',
+                  url: 'https://github.com/untile/workspaces/releases/tag/gen1/2.0.0'
+                }
+              }]
             }
           }
         }
@@ -434,14 +463,16 @@ describe('Changelog generator', () => {
       expect(
         await changelogGenerator({
           ...commonWorkspacesOptions,
-          packageName: 'gen1'
+          packageName: 'gen1',
+          rebuild: true
         })
       ).toMatchSnapshot();
 
       expect(
         await changelogGenerator({
           ...commonWorkspacesOptions,
-          packageName: 'gen2'
+          packageName: 'gen2',
+          rebuild: true
         })
       ).toMatchSnapshot();
     });
@@ -451,7 +482,6 @@ describe('Changelog generator', () => {
         await changelogGenerator({
           ...commonWorkspacesOptions,
           futureRelease: '3.0.0',
-          latest: true,
           packageName: 'gen1'
         })
       ).toMatchSnapshot();
@@ -460,7 +490,6 @@ describe('Changelog generator', () => {
         await changelogGenerator({
           ...commonWorkspacesOptions,
           futureRelease: '3.0.0',
-          latest: true,
           packageName: 'gen2'
         })
       ).toMatchSnapshot();
@@ -471,7 +500,8 @@ describe('Changelog generator', () => {
         await changelogGenerator({
           ...commonWorkspacesOptions,
           futureRelease: '3.0.0',
-          packageName: 'gen1'
+          packageName: 'gen1',
+          rebuild: true
         })
       ).toMatchSnapshot();
 
@@ -479,7 +509,8 @@ describe('Changelog generator', () => {
         await changelogGenerator({
           ...commonWorkspacesOptions,
           futureRelease: '3.0.0',
-          packageName: 'gen2'
+          packageName: 'gen2',
+          rebuild: true
         })
       ).toMatchSnapshot();
     });
@@ -489,7 +520,6 @@ describe('Changelog generator', () => {
         await changelogGenerator({
           ...commonWorkspacesOptions,
           futureRelease: '2.0.0',
-          latest: true,
           packageName: 'gen1'
         });
       } catch (error) {
@@ -502,7 +532,8 @@ describe('Changelog generator', () => {
         await changelogGenerator({
           ...commonWorkspacesOptions,
           futureRelease: '2.0.0',
-          packageName: 'gen1'
+          packageName: 'gen1',
+          rebuild: true
         });
       } catch (error) {
         expect(error).toMatchObject({

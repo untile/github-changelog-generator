@@ -151,15 +151,26 @@ export class ChangelogFetcher {
    */
 
   async getLatestRelease(): Promise<Release | undefined> {
-    const result: LatestReleaseQueryResponse = await this.client(
-      latestReleaseQuery,
-      {
-        owner: this.owner,
-        repo: this.repo
-      }
-    );
+    let result: LatestReleaseQueryResponse;
+    let after: string | null = null;
+    let latestRelease: Release;
 
-    const latestRelease = result.repository.latestRelease.nodes[0];
+    do {
+      result = await this.client(
+        latestReleaseQuery,
+        {
+          after,
+          owner: this.owner,
+          repo: this.repo
+        }
+      );
+
+      after = result.repository.latestRelease.edges[0].cursor;
+      latestRelease = result.repository.latestRelease.edges[0].node;
+    } while (this.packageName && latestRelease.tagName
+      .toLowerCase()
+      .startsWith(`${this.packageName.toLowerCase()}/`)
+    );
 
     return latestRelease;
   }
