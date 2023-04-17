@@ -154,7 +154,7 @@ describe('ChangelogFetcher', () => {
           data: {
             repository: {
               latestRelease: {
-                nodes: [mockLatestRelease]
+                edges: [{ node: mockLatestRelease }]
               }
             }
           }
