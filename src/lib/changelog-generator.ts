@@ -12,7 +12,7 @@ import { getGitRepo } from 'src/core/utils';
  */
 
 export async function changelogGenerator(options: Partial<ChangelogOptions>) {
-  const { baseBranch, futureRelease, futureReleaseTag, labels, latest } =
+  const { baseBranch, futureRelease, futureReleaseTag, labels, rebuild } =
     options;
 
   const token = process.env.GITHUB_TOKEN;
@@ -37,9 +37,9 @@ export async function changelogGenerator(options: Partial<ChangelogOptions>) {
     token
   } as ChangelogOptions);
 
-  const releases = await (latest
-    ? fetcher.fetchLatestChangelog()
-    : fetcher.fetchFullChangelog());
+  const releases = await (rebuild
+    ? fetcher.fetchFullChangelog()
+    : fetcher.fetchLatestChangelog());
 
   return formatChangelog(releases);
 }

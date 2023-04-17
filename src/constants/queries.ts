@@ -22,17 +22,20 @@ export const getReleasesQuery = `
  */
 
 export const latestReleaseQuery = `
-  query latestRelease($owner: String!, $repo: String!) {
+  query latestRelease($owner: String!, $repo: String!, $after:String) {
     repository(owner: $owner, name: $repo) {
-      latestRelease: releases(first: 1, orderBy: { field: CREATED_AT, direction: DESC }) {
-        nodes {
-          createdAt
-          name
-          tagName
-          tagCommit: tagCommit {
-            committedDate
+      latestRelease: releases(first: 1, orderBy: {field: CREATED_AT, direction: DESC}, after: $after) {
+        edges {
+          cursor
+          node {
+            createdAt
+            name
+            tagName
+            tagCommit {
+              committedDate
+            }
+            url
           }
-          url
         }
       }
     }
