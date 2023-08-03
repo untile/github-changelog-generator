@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.0.0](https://github.com/untile/github-changelog-generator/releases/tag/v2.0.0) (2023-08-03)
+- Bump dependencies [\#14](https://github.com/untile/github-changelog-generator/pull/14) ([luisdralves](https://github.com/luisdralves))
+- Fix latest release behaviour and restore default [\#13](https://github.com/untile/github-changelog-generator/pull/13) ([luisdralves](https://github.com/luisdralves))
+- Fix error when unable to infer path to changelog [\#12](https://github.com/untile/github-changelog-generator/pull/12) ([luisdralves](https://github.com/luisdralves))
+
 ## [v1.0.3](https://github.com/untile/github-changelog-generator/releases/tag/v1.0.3) (2023-04-11)
 - Fix changelog not picking up release without name [\#11](https://github.com/untile/github-changelog-generator/pull/11) ([flaviocastro](https://github.com/flaviocastro))
 
