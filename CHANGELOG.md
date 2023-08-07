@@ -1,5 +1,8 @@
 # Changelog
 
+## [v2.0.1](https://github.com/untile/github-changelog-generator/releases/tag/v2.0.1) (2023-08-07)
+- Fix node version [\#15](https://github.com/untile/github-changelog-generator/pull/15) ([rafaelcruzazevedo](https://github.com/rafaelcruzazevedo))
+
 ## [v2.0.0](https://github.com/untile/github-changelog-generator/releases/tag/v2.0.0) (2023-08-03)
 - Bump dependencies [\#14](https://github.com/untile/github-changelog-generator/pull/14) ([luisdralves](https://github.com/luisdralves))
 - Fix latest release behaviour and restore default [\#13](https://github.com/untile/github-changelog-generator/pull/13) ([luisdralves](https://github.com/luisdralves))
