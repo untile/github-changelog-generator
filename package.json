@@ -81,7 +81,7 @@
     "yarn-deduplicate": "^6.0.2"
   },
   "engines": {
-    "node": ">=16 <17",
+    "node": ">=16",
     "npm": "please-use-yarn",
     "yarn": ">=1.22.0"
   },
