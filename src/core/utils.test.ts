@@ -12,11 +12,14 @@ import { getGitRepo, getPreviousReleaseDate, toISOStringNoMs } from './utils';
 
 describe('Utils', () => {
   describe('getGitRepo', () => {
-    vi.mock('execa', () => ({
-      default: {
-        sync: () => ({ stdout: '.' })
-      }
-    }));
+    vi.mock('child_process', async importOriginal => {
+      const actual = await importOriginal();
+
+      return {
+        ...(actual as object),
+        execSync: () => ({ stdout: '.' })
+      };
+    });
 
     it('should infer git owner and repo', () => {
       const gitRepo = getGitRepo();
