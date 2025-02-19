@@ -3,8 +3,8 @@
  */
 
 import { Release } from 'src/types';
+import { execSync } from 'child_process';
 import { readFileSync } from 'fs';
-import execa from 'execa';
 import ini from 'ini';
 import path from 'path';
 
@@ -14,7 +14,7 @@ import path from 'path';
 
 export function getRootPath() {
   return path.resolve(
-    execa.sync('git', ['rev-parse', '--show-toplevel']).stdout.trim()
+    execSync('git rev-parse --show-toplevel').toString().trim()
   );
 }
 
@@ -23,11 +23,32 @@ export function getRootPath() {
  */
 
 export function getPackagePath(packageName: string) {
-  const workspacesInfo = JSON.parse(
-    execa.sync('yarn', ['workspaces', 'info', '--json']).stdout.trim()
-  );
+  const rootPath = getRootPath();
+  let packagePath: string | undefined;
 
-  return path.join(getRootPath(), workspacesInfo[packageName].location);
+  try {
+    const output = execSync('yarn workspaces list --json').toString().trim();
+    const lines = output.split('\n');
+
+    for (const line of lines) {
+      const entry = JSON.parse(line);
+
+      if (entry.name === packageName) {
+        packagePath = entry.location;
+        break;
+      }
+    }
+  } catch (e) {
+    const output = execSync('yarn workspaces info --json').toString().trim();
+    const workspacesInfo = JSON.parse(output);
+    packagePath = workspacesInfo[packageName].location;
+  }
+
+  if (!packagePath) {
+    throw new Error(`Package ${packageName} not found in workspaces`);
+  }
+
+  return path.join(rootPath, packagePath);
 }
 
 /**
