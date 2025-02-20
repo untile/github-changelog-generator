@@ -119,7 +119,6 @@ $ yarn github-changelog-generator --future-release 1.0.0 --labels bugfix,support
 Be sure to have configured `GITHUB_TOKEN` in your globals.
 
 ```sh
-yarn build
-npm version [<new version> | major | minor | patch] -m "Release %s"
+yarn release [<new version> | major | minor | patch]
 git push origin master && git push --tags
 ```

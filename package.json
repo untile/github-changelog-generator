@@ -30,9 +30,9 @@
     "lint:js": "eslint . --ext .ts",
     "lint:types": "tsc --noEmit",
     "prepare": "husky install",
+    "release": "bin/release.sh",
     "test": "vitest --coverage --run --pool=threads",
-    "test-watch": "vitest --watch",
-    "version": "node bin/cli.js --future-release=v$npm_package_version && git add -A CHANGELOG.md"
+    "test-watch": "vitest --watch"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
