@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.0](https://github.com/untile/github-changelog-generator/releases/tag/3.0.0) (2025-02-20)
+- Update release script [\#17](https://github.com/untile/github-changelog-generator/pull/17) ([rafaelcruzazevedo](https://github.com/rafaelcruzazevedo))
+- Bump dependencies [\#16](https://github.com/untile/github-changelog-generator/pull/16) ([luisdralves](https://github.com/luisdralves))
+
 ## [v2.0.1](https://github.com/untile/github-changelog-generator/releases/tag/v2.0.1) (2023-08-07)
 - Fix node version [\#15](https://github.com/untile/github-changelog-generator/pull/15) ([rafaelcruzazevedo](https://github.com/rafaelcruzazevedo))
 
