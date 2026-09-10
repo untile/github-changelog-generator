@@ -74,7 +74,7 @@
     "sort-package-json": "^2.14.0",
     "tsc-alias": "^1.8.10",
     "typescript": "^5.7.3",
-    "vitest": "^3.0.6",
+    "vitest": "^4.1.11",
     "yarn-deduplicate": "^6.0.2"
   },
   "engines": {
